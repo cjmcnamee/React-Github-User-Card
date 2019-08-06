@@ -4,17 +4,20 @@ import ReactDOM from 'react-dom';
 import './App.css';
 
 import Card from './components/Card';
+import FollowerCard from './components/FollowerCard';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      users: []
+      users: [],
+      followers: []
     };
   }
 
   componentDidMount() {
     this.fetchUsers();
+    this.fetchFollowers();
   }
 
   fetchUsers = () => {
@@ -28,11 +31,25 @@ class App extends React.Component {
       })
   }
 
+  fetchFollowers = () => {
+    fetch(`https://api.github.com/users/cjmcnamee/followers`)
+      .then(res => {
+        return res.json();
+      })
+      .then(git => this.setState({ followers: git }))
+      .catch(err => {
+        console.log('you fucked up, again');
+      })
+  }
+
   render() {
     return (
       <div className="App">
-        <h1>Github Users</h1>
+        <h1>Connor:</h1>
+        <br />
         <Card users={this.state.users}/>
+        <h2>and some other bitches:</h2>
+        <FollowerCard followers={this.state.followers}/>
       </div>
     );
   }
