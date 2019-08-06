@@ -1,0 +1,23 @@
+.userCard {
+  background-color: white;
+  height: 160px;
+  width: 400px;
+  font-size: 62.5%;
+  color: black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 2px 2px 8px white;
+  text-shadow: none;
+  margin-bottom: 20px;
+}
+
+.gitImage {
+  height: 120px;
+  border-radius: 4px;
+}
+
+.follow {
+  display: flex;
+  justify-content: space-around;
+}
